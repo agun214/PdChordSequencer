@@ -1,0 +1,70 @@
+PdChordSequencer by Alex Phil Gunderson 2019
+
+Made with Puredata
+  version: Pd-0.48.1
+
+A WORK IN PROGRESS
+
+*******************************************************************************
+Contents
+
+  1) What is this?
+  2) How to use
+  3) uhhhhhh
+
+*******************************************************************************
+1) What is this?
+
+This is a simple chord sequencer that can sync with a MIDI Clock and responds
+to MIDI START and STOP messages. It takes inputs from MIDI channels 3 and 4
+and outputs noteONs and noteOFFS on channel 8 in sync with a MIDI clock.
+
+It's designed for a two-octave keyboard (low C=48), which is why the duration
+keys are set the way they are.
+
+My setup includes the following:
+-Line6 MK25 Mobile Keys on MIDI channel 3
+-Numark DJ2Go on MIDI channel 4
+-sooperlooper for MIDI clock
+
+I use it with sooperloopers MIDI clock so I can play a loop on a bass guitar and
+have a chord progression play along. I've also fed it into QMidiArp.
+
+*******************************************************************************
+2) How to use:
+
+Each square represents a measure in 4/4 time. The write head shows where the
+current chord entry will start. Once a chord is played, the program will wait for
+a duration entry (1-8 steps, selected with black keys 54-70). After a duration
+is selected, the write head will move to the next entry step and wait for
+another chord entry.
+
+    1) Chord Entry Mode: Play a chord.
+      Entry mode changes when you lift your hand
+      (so the number of MIDI Note ONs an OFFs is equal)
+
+    2) Select Duration Mode: Enter chord length.
+      Play a black key 54-70 (corresponds to 1-8 steps).
+      After you hit a key, the write head will move to the next step
+      and the mode switches back to chord entry
+
+      Note   # of Steps Chord will play
+      --54   1
+      --56   2
+      --58   3
+      --61   4
+      --63   5
+      --66   6
+      --68   7
+      --70   8
+      (all other notes default to 1 step)
+
+    3) Start MIDI Clock to output chords (this can be done at any point)
+
+*******************************************************************************
+
+3) As mentioned... this is a work in progress so there will be
+   extraneous bits of code and undocumented features
+
+*******************************************************************************
+*******************************************************************************
